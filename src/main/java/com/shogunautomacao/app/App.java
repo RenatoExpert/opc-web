@@ -1,14 +1,9 @@
 package com.shogunautomacao.app;
 
-//import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
-//import org.eclipse.milo.opcua.sdk.client.*;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
-//import org.eclipse.milo.opcua.stack.core.*;
 //import org.eclipse.milo.opua.stack.core.types.enumerated.MessageSecurityMode;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
-//import org.apache.commons.math3.*;
-//import org.joda.time.DateTime;
 
 
 
