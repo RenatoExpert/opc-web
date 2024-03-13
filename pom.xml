@@ -20,16 +20,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>2.12.5</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-math3</artifactId>
-        <version>3.2</version>
-    </dependency>
-    <dependency>
         <groupId>org.eclipse.milo</groupId>
         <artifactId>sdk-client</artifactId>
         <version>0.6.11</version>
