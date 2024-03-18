@@ -24,17 +24,17 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
-
 public class App {
     public static void main( String[] args ) {
 	String endpoint_url = "opc.tcp://ec2-3-93-58-9.compute-1.amazonaws.com:4840/";
 	SecurityPolicy policy = SecurityPolicy.Basic256Sha256;
+	Path securityTempDir = Paths.get(System.getProperty("java.io.tmpdir"), "client", "security");
+	KeyStoreLoader loader = new KeyStoreLoader().load(securityTempDir);
         OpcUaClient client = OpcUaClient.create(
             endpoint_url,
             endpoints ->
                 endpoints.stream()
-                    .filter(e -> getSecurityPolicy().getUri().equals(e.getSecurityPolicyUri()))
+                    .filter(e -> policy.getUri().equals(e.getSecurityPolicyUri()))
                     .findFirst(),
             configBuilder ->
                 configBuilder
@@ -43,8 +43,7 @@ public class App {
                     .setKeyPair(loader.getClientKeyPair())
                     .setCertificate(loader.getClientCertificate())
                     .setCertificateChain(loader.getClientCertificateChain())
-                    .setCertificateValidator(certificateValidator)
-                    .setIdentityProvider(clientExample.getIdentityProvider())
+                    .setIdentityProvider(new AnonymousProvider())
                     .setRequestTimeout(uint(5000))
                     .build()
         );
