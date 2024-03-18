@@ -30,8 +30,6 @@ public class App {
     public static void main( String[] args ) {
 	String endpoint_url = "opc.tcp://ec2-3-93-58-9.compute-1.amazonaws.com:4840/";
 	SecurityPolicy policy = SecurityPolicy.Basic256Sha256;
-	Path securityTempDir = Paths.get(System.getProperty("java.io.tmpdir"), "client", "security");
-	KeyStoreLoader loader = new KeyStoreLoader().load(securityTempDir);
         OpcUaClient client = OpcUaClient.create(
             endpoint_url,
             endpoints ->
@@ -42,9 +40,6 @@ public class App {
                 configBuilder
                     .setApplicationName(LocalizedText.english("eclipse milo opc-ua client"))
                     .setApplicationUri("urn:eclipse:milo:examples:client")
-                    .setKeyPair(loader.getClientKeyPair())
-                    .setCertificate(loader.getClientCertificate())
-                    .setCertificateChain(loader.getClientCertificateChain())
                     .setIdentityProvider(new AnonymousProvider())
                     .setRequestTimeout(uint(5000))
                     .build()
