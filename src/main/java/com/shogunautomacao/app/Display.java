@@ -9,7 +9,14 @@ public class Display {
 	}
 	public static void integer(int num) {
 		String hex = String.format("%08x", num);
-		compare(Integer.toString(num), hex);
+		ArrayList<String> hexs = new ArrayList<String>();
+		for(int i = 0; i < 4; i++) {
+			int from = 6 - (i * 2);
+			int to = from + 2;
+			hexs.add(hex.substring(from, to));
+		}
+		String result = String.join(" ", hexs);
+		compare(Integer.toString(num), result);
 	}
 	public static void ascii(String text) {
 		ArrayList<String> hexs = new ArrayList<String>();
