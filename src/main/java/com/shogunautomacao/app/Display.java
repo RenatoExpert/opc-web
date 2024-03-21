@@ -8,7 +8,7 @@ public class Display {
 		System.out.println(message);
 	}
 	public static void integer(int num) {
-		String hex = String.format("%02x", num);
+		String hex = String.format("%08x", num);
 		compare(Integer.toString(num), hex);
 	}
 	public static void ascii(String text) {
