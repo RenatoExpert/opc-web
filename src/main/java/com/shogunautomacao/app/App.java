@@ -1,6 +1,6 @@
 package com.shogunautomacao.app;
 
-import Talker;
+import com.shogunautomacao.app.Talker;
 
 public class App {
 	public static void main(String[] args) throws Exception {
