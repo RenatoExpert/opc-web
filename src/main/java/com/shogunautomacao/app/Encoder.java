@@ -15,7 +15,7 @@ public class Encoder {
 	public static byte[] integer(int num) {
 		byte[] big_endian = ByteBuffer.allocate(4).putInt(num).array();
 		byte[] little_endian = new byte[4];
-		for(int i = 0; i > 4; i++) {
+		for(int i = 0; i < 4; i++) {
 			little_endian[i] = big_endian[3 - i]; 
 		}
 		return little_endian;
