@@ -27,7 +27,6 @@ public class Chunk {
 
 		System.out.println("Send Buffer Size");
 		byte[] send_size = encoder.integer(8192);
-		System.out.println(Arrays.toString(send_size));
 		encoder.display(send_size);
 
 		System.out.println("Max Message Size");
