@@ -1,31 +1,21 @@
 package com.shogunautomacao.app;
 
-import com.shogunautomacao.app.Talker;
-import com.shogunautomacao.app.Display;
+import com.shogunautomacao.app.Encoder;
 
 public class App {
 	public static void main(String[] args) throws Exception {
-		Talker talker = new Talker();
-		talker.talk();
-		Display display = new Display();
+		Encoder encoder = new Encoder();
 		System.out.println("Converting int to hex");
 		//	Message
 		System.out.println("Protocol Version");
-		display.integer(0);
 		System.out.println("Receiver Buffer Size");
-		display.integer(8192);
 		System.out.println("Send Buffer Size");
-		display.integer(8192);
 		System.out.println("Message Size");
-		display.integer(0);
 		System.out.println("Max Chunk");
-		display.integer(0);
 		System.out.println("Endpoint URL");
 		//	Header
 		System.out.println("Message type");
-		display.ascii("HEL");
 		System.out.println("Reserved Byte");
-		display.ascii("F");
 		String url = "opc.tcp://ec2-3-93-58-9.compute-1.amazonaws.com:4840/";
 	}
 }

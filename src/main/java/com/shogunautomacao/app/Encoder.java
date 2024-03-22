@@ -2,7 +2,7 @@ package com.shogunautomacao.app;
 
 import java.util.ArrayList;
 
-public class Display {
+public class Encoder {
 	private static void compare(String before, String after) {
 		String message = String.format("%s => %s", before, after);
 		System.out.println(message);
