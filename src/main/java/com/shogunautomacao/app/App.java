@@ -21,9 +21,9 @@ public class App {
 		System.out.println(Arrays.toString(send_size));
 		encoder.display(send_size);
 
-		System.out.println("Message Size");
-		byte[] message_size = encoder.integer(0);
-		encoder.display(message_size);
+		System.out.println("Max Message Size");
+		byte[] max_message_size = encoder.integer(0);
+		encoder.display(max_message_size);
 
 		System.out.println("Max Chunk");
 		byte[] max_chunk = encoder.integer(0);
