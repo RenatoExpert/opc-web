@@ -29,10 +29,10 @@ public class Encoder {
 		byte[] size = integer(message.length);
 		byte[] bytes = new byte[message.length + size.length];
 		int index = 0;
-		for(byte value: message) {
+		for(byte value: size) {
 			bytes[index++] = value;
 		}
-		for(byte value: size) {
+		for(byte value: message) {
 			bytes[index++] = value;
 		}
 		return bytes;
