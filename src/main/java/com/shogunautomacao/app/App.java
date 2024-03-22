@@ -1,10 +1,12 @@
 package com.shogunautomacao.app;
 
 import com.shogunautomacao.app.Chunk;
+import com.shogunautomacao.app.Encoder;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.OutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class App {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 			String line;
 			System.out.println("\nReading from server...");
+			Encoder encoder = new Encoder();
 			while((line = reader.readLine()) != null) {
 				encoder.display(line);
 			}
