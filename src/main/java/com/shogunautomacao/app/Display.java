@@ -18,15 +18,8 @@ public class Display {
 		String result = String.join(" ", hexs);
 		compare(Integer.toString(num), result);
 	}
-	public static void ascii(String text) {
-		ArrayList<String> hexs = new ArrayList<String>();
-		for(char symbol: text.toCharArray()) {
-			int value = symbol;
-			String hex = String.format("%02x", value);
-			hexs.add(hex);
-		}
-		String result = String.join(" ", hexs);
-		compare(text, result);
+	public static byte[] ascii(String text) {
+		return text.getBytes();
 	}
 }
 
