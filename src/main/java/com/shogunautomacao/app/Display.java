@@ -7,16 +7,13 @@ public class Display {
 		String message = String.format("%s => %s", before, after);
 		System.out.println(message);
 	}
-	public static void integer(int num) {
-		String hex = String.format("%08x", num);
-		ArrayList<String> hexs = new ArrayList<String>();
-		for(int i = 0; i < 4; i++) {
-			int from = 6 - (i * 2);
-			int to = from + 2;
-			hexs.add(hex.substring(from, to));
+	public static byte[] integer(int num) {
+		byte[] big_endian = ByteBuffer.allocate(4).putInt(num).array();
+		ArrayList<byte> little_endian = new ArrayList<byte>();
+		for(int i = big_endian.length; i > 0; i--) {
+			little_endian.add(big_endian[i - 1]); 
 		}
-		String result = String.join(" ", hexs);
-		compare(Integer.toString(num), result);
+		return litte_endian.toArray();
 	}
 	public static byte[] ascii(String text) {
 		return text.getBytes();
