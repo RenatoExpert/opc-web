@@ -2,20 +2,21 @@ package com.shogunautomacao.app;
 
 import com.shogunautomacao.app.Encoder;
 
-Encoder encoder = new Encoder();
-
 public class Chunk {
 	String url;
 	public Chunk(String endpoint) {
 		url = endpoint;
 	}
 	public byte[] get_chunk() {
+		Encoder encoder = new Encoder();
+
 		byte[] content = get_content();
 		byte[] header = get_header(content.length);
 		byte[] chunk = encoder.concat(header, content);
 		return chunk;
 	}
 	private byte[] get_content() {
+		Encoder encoder = new Encoder();
 		System.out.println("Protocol Version");
 		byte[] protocol_version = encoder.integer(0);
 		encoder.display(protocol_version);
@@ -45,6 +46,7 @@ public class Chunk {
 		return content;
 	}
 	private byte[] get_header(int length) {
+		Encoder encoder = new Encoder();
 		System.out.println("Message type");
 		byte[] message_type = encoder.ascii("HEL");
 		encoder.display(message_type);
