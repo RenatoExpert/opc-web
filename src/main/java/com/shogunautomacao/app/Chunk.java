@@ -66,6 +66,7 @@ public class Chunk {
 
 		System.out.println("Message Size");
 		byte[] message_size = encoder.integer(length + 8);
+		encoder.display(message_size);
 
 		byte[] header = encoder.concat(message_type, reserved_byte, message_size);
 		return header;
