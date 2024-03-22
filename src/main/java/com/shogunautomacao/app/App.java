@@ -6,7 +6,7 @@ import java.net.Socket;
 public class App {
 	public static void main(String[] args) throws Exception {
 		String protocol = "opc.tcp";
-		String host = "c2-3-93-58-9.compute-1.amazonaws.com;
+		String host = "c2-3-93-58-9.compute-1.amazonaws.com";
 		String port = 4840;
 		String url = String.format("%s://%s:%i/", protocol, host, port);
 		Chunk chunk = new Chunk(url);
