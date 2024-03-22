@@ -23,5 +23,11 @@ public class Encoder {
 	public static byte[] ascii(String text) {
 		return text.getBytes();
 	}
+	public static byte[] string(String text) {
+		byte[] message = text.getBytes("UTF-8");
+		byte[] length = integer(message.length);
+		byte[] bytes = message.concat(length);
+		return bytes;
+	}
 }
 
