@@ -9,10 +9,12 @@ public class App {
 		//	Message
 		System.out.println("Protocol Version");
 		byte[] protocol_version = encoder.integer(0);
+		encoder.display(protocol_version);
 		System.out.println("Receiver Buffer Size");
 		byte[] receiver_size = encoder.integer(8192);
 		System.out.println("Send Buffer Size");
 		byte[] send_size = encoder.integer(8192);
+		encoder.display(send_size);
 		System.out.println("Message Size");
 		byte[] message_size = encoder.integer(0);
 		System.out.println("Max Chunk");
