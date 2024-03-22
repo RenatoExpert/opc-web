@@ -1,8 +1,6 @@
 package com.shogunautomacao.app;
 
-import com.shogunautomacao.app.Encoder;
 import com.shogunautomacao.app.Chunk;
-import java.util.Arrays;
 
 public class App {
 	public static void main(String[] args) throws Exception {
