@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.nio.ByteBuffer;
 
 public class Encoder {
-	private static void compare(String before, String after) {
-		String message = String.format("%s => %s", before, after);
-		System.out.println(message);
+	public static void display(byte[] input) {
+		ArrayList<String> hexs = new ArrayList<String>();
+		for(byte value: input) {
+			hexs.add(String.format("%02x", value));
+		}
+		String result = String.join(" ", hexs);
+		System.out.println(result);
 	}
 	public static byte[] integer(int num) {
 		byte[] big_endian = ByteBuffer.allocate(4).putInt(num).array();
