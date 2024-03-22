@@ -37,5 +37,19 @@ public class Encoder {
 		}
 		return bytes;
 	}
+	public static byte[] concat(byte[]... lines) {
+		int length = 0;
+		for(byte[] line: lines) {
+			length += line.length;
+		}
+		byte[] result = new byte[length];
+		int i = 0;
+		for(byte[] line: lines) {
+			for(byte value: line) {
+				result[i] = value;
+			}
+		}
+		return result;
+	}
 }
 
