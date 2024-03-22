@@ -13,6 +13,8 @@ public class App {
 		String url = String.format("%s://%s:%d/", protocol, host, port);
 		Chunk chunk = new Chunk(url);
 		byte[] hello = chunk.get_chunk();
+
+		System.out.println("\nConnecting to " + url);
 		try (Socket socket = new Socket(host, port)) {
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
