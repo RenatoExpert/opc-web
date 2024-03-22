@@ -8,7 +8,7 @@ public class Chunk {
 		url = endpoint;
 	}
 	public byte[] get_chunk() {
-		byte[] content = get_content(url);
+		byte[] content = get_content();
 		byte[] header = get_header(content.length);
 		byte[] chunk = encoder.concat(header, content);
 		return chunk;
