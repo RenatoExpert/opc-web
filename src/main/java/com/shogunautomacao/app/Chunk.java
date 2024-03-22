@@ -4,7 +4,7 @@ import com.shogunautomacao.app.Encoder;
 
 public class Chunk {
 	String url;
-	public Chuck(String endpoint) {
+	public Chunk(String endpoint) {
 		url = endpoint;
 	}
 	public byte[] get_chunk() {
