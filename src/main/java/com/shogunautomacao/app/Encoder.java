@@ -46,7 +46,7 @@ public class Encoder {
 		int i = 0;
 		for(byte[] line: lines) {
 			for(byte value: line) {
-				result[i] = value;
+				result[i++] = value;
 			}
 		}
 		return result;
