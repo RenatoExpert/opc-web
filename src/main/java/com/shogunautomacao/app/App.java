@@ -1,6 +1,7 @@
 package com.shogunautomacao.app;
 
 import com.shogunautomacao.app.Encoder;
+import java.util.Arrays;
 
 public class App {
 	public static void main(String[] args) throws Exception {
@@ -14,6 +15,7 @@ public class App {
 		byte[] receiver_size = encoder.integer(8192);
 		System.out.println("Send Buffer Size");
 		byte[] send_size = encoder.integer(8192);
+		System.out.println(Arrays.toString(send_size));
 		encoder.display(send_size);
 		System.out.println("Message Size");
 		byte[] message_size = encoder.integer(0);
