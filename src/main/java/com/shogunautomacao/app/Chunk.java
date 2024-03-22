@@ -3,7 +3,17 @@ package com.shogunautomacao.app;
 import com.shogunautomacao.app.Encoder;
 
 public class Chunk {
-	private byte[] get_content(String url) {
+	String url;
+	public Chuck(String endpoint) {
+		url = endpoint;
+	}
+	public byte[] get_chunk() {
+		byte[] content = get_content(url);
+		byte[] header = get_header(content.length);
+		byte[] chunk = encoder.concat(header, content);
+		return chunk;
+	}
+	private byte[] get_content() {
 		Encoder encoder = new Encoder();
 
 		System.out.println("Protocol Version");
@@ -34,11 +44,22 @@ public class Chunk {
 		byte[] content = encoder.concat(protocol_version, receiver_size, send_size, max_message_size, max_chunk, endpoint);
 		return content;
 	}
-	public byte[] get_chunk(String url) {
-		byte[] content = get_content(url);
-		byte[] header = get_header(content.length);
-		byte[] chunk = encoder.concat(header, content);
-		return chunk;
+	private byte[] get_header(int length) {
+		Encoder encoder = new Encoder();
+
+		System.out.println("Message type");
+		byte[] message_type = encoder.ascii("HEL");
+		encoder.display(message_type);
+
+		System.out.println("Reserved Byte");
+		byte[] reserved_byte = encoder.ascii("F");
+		encoder.display(reserved_byte);
+
+		System.out.println("Message Size");
+		byte[] message_size = encoder.integer(length + 8);
+
+		byte[] header = encoder.concat(message_type, reserved_byte, message_size);
+		return header;
 	}
 }
 
