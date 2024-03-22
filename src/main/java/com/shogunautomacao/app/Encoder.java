@@ -25,8 +25,15 @@ public class Encoder {
 	}
 	public static byte[] string(String text) {
 		byte[] message = text.getBytes("UTF-8");
-		byte[] length = integer(message.length);
-		byte[] bytes = message.concat(length);
+		byte[] size = integer(message.length);
+		byte[] bytes = new byte[message.length + size.length];
+		int index = 0;
+		for(byte value: message) {
+			bytes[index++] = value;
+		}
+		for(byte value: size) {
+			bytes[index++] = value;
+		}
 		return bytes;
 	}
 }
