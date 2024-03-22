@@ -2,6 +2,7 @@ package com.shogunautomacao.app;
 
 import java.util.ArrayList;
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 
 public class Encoder {
 	public static void display(byte[] input) {
@@ -24,7 +25,7 @@ public class Encoder {
 		return text.getBytes();
 	}
 	public static byte[] string(String text) {
-		byte[] message = text.getBytes("UTF-8");
+		byte[] message = text.getBytes(StandardCharsets.UTF_8);
 		byte[] size = integer(message.length);
 		byte[] bytes = new byte[message.length + size.length];
 		int index = 0;
