@@ -10,17 +10,17 @@ public class Chunk {
 	public byte[] get_chunk() {
 		Encoder encoder = new Encoder();
 
-		System.out.println("Content");
+		System.out.println("\n\tContent");
 		byte[] content = get_content();
 		System.out.println("Content Bytes");
 		encoder.display(content);
 
-		System.out.println("Header");
+		System.out.println("\n\tHeader");
 		byte[] header = get_header(content.length);
 		System.out.println("Header Bytes");
 		encoder.display(header);
 
-		System.out.println("Full Chunk");
+		System.out.println("\n\tFull Chunk");
 		byte[] chunk = encoder.concat(header, content);
 		encoder.display(chunk);
 		return chunk;
