@@ -8,10 +8,15 @@ public class App {
 		System.out.println("Converting int to hex");
 		//	Message
 		System.out.println("Protocol Version");
+		byte[] protocol_version = encoder.integer(0);
 		System.out.println("Receiver Buffer Size");
+		byte[] receiver_size = encoder.integer(8192);
 		System.out.println("Send Buffer Size");
+		byte[] send_size = encoder.integer(8192);
 		System.out.println("Message Size");
+		byte[] message_size = encoder.integer(0);
 		System.out.println("Max Chunk");
+		byte[] max_chunk = encoder.integer(0);
 		System.out.println("Endpoint URL");
 		//	Header
 		System.out.println("Message type");

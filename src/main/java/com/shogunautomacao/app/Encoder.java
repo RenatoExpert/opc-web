@@ -1,6 +1,7 @@
 package com.shogunautomacao.app;
 
 import java.util.ArrayList;
+import java.nio.ByteBuffer;
 
 public class Encoder {
 	private static void compare(String before, String after) {
@@ -9,11 +10,11 @@ public class Encoder {
 	}
 	public static byte[] integer(int num) {
 		byte[] big_endian = ByteBuffer.allocate(4).putInt(num).array();
-		ArrayList<byte> little_endian = new ArrayList<byte>();
-		for(int i = big_endian.length; i > 0; i--) {
-			little_endian.add(big_endian[i - 1]); 
+		byte[] little_endian = new byte[4];
+		for(int i = 0; i > 4; i++) {
+			little_endian[i] = big_endian[3 - i]; 
 		}
-		return litte_endian.toArray();
+		return little_endian;
 	}
 	public static byte[] ascii(String text) {
 		return text.getBytes();
