@@ -12,10 +12,14 @@ public class Chunk {
 
 		System.out.println("Content");
 		byte[] content = get_content();
+		System.out.println("Content Bytes");
 		encoder.display(content);
+
 		System.out.println("Header");
 		byte[] header = get_header(content.length);
+		System.out.println("Header Bytes");
 		encoder.display(header);
+
 		System.out.println("Full Chunk");
 		byte[] chunk = encoder.concat(header, content);
 		encoder.display(chunk);
