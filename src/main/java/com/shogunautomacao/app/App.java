@@ -22,10 +22,12 @@ public class App {
 		System.out.println("Max Chunk");
 		byte[] max_chunk = encoder.integer(0);
 		System.out.println("Endpoint URL");
+		String url = "opc.tcp://ec2-3-93-58-9.compute-1.amazonaws.com:4840/";
+		byte[] endpoint = encoder.string(url);
+		encoder.display(endpoint);
 		//	Header
 		System.out.println("Message type");
 		System.out.println("Reserved Byte");
-		String url = "opc.tcp://ec2-3-93-58-9.compute-1.amazonaws.com:4840/";
 	}
 }
 
