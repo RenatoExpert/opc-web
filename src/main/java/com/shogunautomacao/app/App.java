@@ -4,7 +4,9 @@ import com.shogunautomacao.app.Chunk;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.OutputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
 import java.io.IOException;
 
 public class App {
@@ -21,6 +23,13 @@ public class App {
 			OutputStream output = socket.getOutputStream();
 			PrintWriter writer = new PrintWriter(output, true);
 			writer.print(chunk);
+			InputStream input = socket.getInputStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+			String line;
+			System.out.println("\nReading from server...");
+			while((line = reader.readLine()) != null) {
+				encoder.display(line);
+			}
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
 		} catch (IOException ex) {
