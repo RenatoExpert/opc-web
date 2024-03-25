@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.PrintStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -24,8 +25,8 @@ public class App {
 		System.out.println("\nConnecting to " + url);
 		try (Socket socket = new Socket(host, port)) {
 			OutputStream output = socket.getOutputStream();
-			PrintWriter writer = new PrintWriter(output, true);
-			writer.println(hello);
+			PrintStream writer = new PrintStream(output, true);
+			writer.write(hello);
 			//socket.close();
 			/*
 			InputStream input = socket.getInputStream();
