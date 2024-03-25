@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.PrintStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,14 +27,14 @@ public class App {
 			OutputStream output = socket.getOutputStream();
 			PrintStream writer = new PrintStream(output, true);
 			writer.write(hello);
-			InputStream input = socket.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-			int response;
-			System.out.println("\nReading from server...");
 			Encoder encoder = new Encoder();
-			while((response = reader.read())) {
-				System.out.println("Test " + response);
-				//encoder.display(response);
+			System.out.println("\nReading from server...");
+			InputStream input = socket.getInputStream();
+			int bytesRead;
+			byte[] buffer = new byte[4];
+			while((bytesRead = input.read(buffer)) != -1) {
+				System.out.println("Read...");
+				encoder.display(buffer);
 			}
 			System.out.println("End!");
 		} catch (UnknownHostException ex) {
