@@ -27,8 +27,6 @@ public class App {
 			OutputStream output = socket.getOutputStream();
 			PrintStream writer = new PrintStream(output, true);
 			writer.write(hello);
-			//socket.close();
-			/*
 			InputStream input = socket.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 			String line;
@@ -38,7 +36,6 @@ public class App {
 				System.out.println("Test");
 				System.out.println(line);
 			}
-			*/
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
 		} catch (IOException ex) {
