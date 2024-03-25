@@ -25,7 +25,7 @@ public class App {
 		try (Socket socket = new Socket(host, port)) {
 			OutputStream output = socket.getOutputStream();
 			PrintWriter writer = new PrintWriter(output, true);
-			writer.println(chunk);
+			writer.println(hello);
 			//socket.close();
 			/*
 			InputStream input = socket.getInputStream();
