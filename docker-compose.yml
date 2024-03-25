@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  client:
+    container_name: opc_client
+    image: opc_client
+    build: .
+    depends_on:
+      - server
+    networks:
+      - opc_net
+  server:
+    container_name: opc_server
+    command: sh -c "nc -lk -p 4844 | hexdump -C"
+    image: alpine:3.19
+    build: server
+    networks:
+      - opc_net
+    ports:
+      - 4844:4844
+
+networks:
+  opc_net:
+    driver: bridge
+
