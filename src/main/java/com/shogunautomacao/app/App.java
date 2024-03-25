@@ -14,9 +14,9 @@ import java.io.IOException;
 public class App {
 	public static void main(String[] args) throws Exception {
 		String protocol = "opc.tcp";
-		//String host = "ec2-3-93-58-9.compute-1.amazonaws.com";
-		String host = "server";
-		int port = 4844;
+		String host = "ec2-3-93-58-9.compute-1.amazonaws.com";
+		//String host = "server";
+		int port = 4840;
 		String url = String.format("%s://%s:%d/", protocol, host, port);
 		Chunk chunk = new Chunk(url);
 		byte[] hello = chunk.get_chunk();
@@ -28,13 +28,14 @@ public class App {
 			writer.write(hello);
 			InputStream input = socket.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-			String line;
+			int response;
 			System.out.println("\nReading from server...");
 			Encoder encoder = new Encoder();
-			while((line = reader.readLine()) != null) {
-				System.out.println("Test");
-				System.out.println(line);
+			while((response = reader.read())) {
+				System.out.println("Test " + response);
+				//encoder.display(response);
 			}
+			System.out.println("End!");
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
 		} catch (IOException ex) {
