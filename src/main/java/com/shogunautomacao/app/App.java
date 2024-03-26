@@ -31,9 +31,9 @@ public class App {
 			System.out.println("\nReading from server...");
 			InputStream input = socket.getInputStream();
 			int bytesRead;
-			byte[] buffer = new byte[1];
-			while((bytesRead = input.read(buffer)) != -1) {
-				System.out.println("Read...");
+			byte[] buffer = new byte[4];
+			while((bytesRead = input.read(buffer)) > 0) {
+				System.out.println(String.format("Read %d", bytesRead));
 				encoder.display(buffer);
 			}
 			System.out.println("End!");
