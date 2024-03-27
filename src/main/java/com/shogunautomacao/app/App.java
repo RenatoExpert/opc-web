@@ -2,6 +2,7 @@ package com.shogunautomacao.app;
 
 import com.shogunautomacao.app.Chunk;
 import com.shogunautomacao.app.Encoder;
+import com.shogunautomacao.app.Decoder;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.OutputStream;
@@ -27,14 +28,24 @@ public class App {
 			OutputStream output = socket.getOutputStream();
 			PrintStream writer = new PrintStream(output, true);
 			writer.write(hello);
+			//	Reading
 			Encoder encoder = new Encoder();
+			Decoder decoder = new Decoder();
 			System.out.println("\nReading from server...");
 			InputStream input = socket.getInputStream();
 			int bytesRead;
-			byte[] buffer = new byte[4];
+			byte[] buffer = new byte[1];
+			int count = 0;
+			byte[] header = new byte[8];
 			while((bytesRead = input.read(buffer)) > 0) {
+				if(count < 8) {		// Header
+					header[count] = buffer[0];
+				} else {		// Content
+					decoder.get_chunk_lenght(header);
+				}
 				System.out.println(String.format("Read %d", bytesRead));
 				encoder.display(buffer);
+				count += bytesRead;
 			}
 			System.out.println("End!");
 		} catch (UnknownHostException ex) {
