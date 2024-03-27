@@ -37,11 +37,12 @@ public class App {
 			byte[] buffer = new byte[1];
 			int count = 0;
 			byte[] header = new byte[8];
-			while((bytesRead = input.read(buffer)) > 0) {
+			int chunk_length = 16;
+			while((bytesRead = input.read(buffer)) > 0 && count < chunk_length) {
 				if(count < 8) {		// Header
 					header[count] = buffer[0];
 				} else {		// Content
-					decoder.get_chunk_lenght(header);
+					chunk_length = decoder.get_chunk_length(header);
 				}
 				System.out.println(String.format("Read %d", bytesRead));
 				encoder.display(buffer);
